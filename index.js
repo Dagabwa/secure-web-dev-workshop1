@@ -120,16 +120,15 @@ function getFilmingLocationsNumberPerDistrict () {
 // 1. Implement the function, result expected as an array of object like:
 //    const result = [{film: 'LRDM - Patriot season 2', locations: 12}, {...}]
 // 2. Log the first and last item of the array
-function getFilmingLocationsNumberDistrict(district) {
-	let nb = 0
-	for (let i=0;i<filmingLocations.length;i++)
-	{
-		if(filmingLocations[i].fields.ardt_lieu === district )
-			nb+=1
-	}
-	return nb
-}
+
 function getFilmLocationsByFilm () {
+	let noms_film = []
+	for (let i = 0; i < filmingLocations.length; i++) {
+		let film = filmingLocations[i].fields.nom_tournage
+		if (!(noms_film.includes(film)))
+			noms_film.push(film)
+	}
+	let result =[]
 
 	return []
 }
