@@ -124,12 +124,13 @@ function getFilmingLocationsNumberDistrict(district) {
 	let nb = 0
 	for (let i=0;i<filmingLocations.length;i++)
 	{
-		if(filmingLocations[i].fields.ardt_lieu == district )
+		if(filmingLocations[i].fields.ardt_lieu === district )
 			nb+=1
 	}
 	return nb
 }
 function getFilmLocationsByFilm () {
+
 	return []
 }
 console.log(filmingLocations[0].fields.nom_tournage)
