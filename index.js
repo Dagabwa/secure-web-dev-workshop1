@@ -122,30 +122,56 @@ function getFilmingLocationsNumberPerDistrict () {
 // 2. Log the first and last item of the array
 
 function getFilmLocationsByFilm () {
+	let result =[]
 	let noms_film = []
 	for (let i = 0; i < filmingLocations.length; i++) {
 		let film = filmingLocations[i].fields.nom_tournage
 		if (!(noms_film.includes(film)))
 			noms_film.push(film)
 	}
-	let result =[]
+	for(let i=0;i<noms_film.length;i++){
+		let nb=0
+		for (let u =0;u<filmingLocations.length;u++){
+			if(filmingLocations[u].fields.nom_tournage==noms_film[i]){
+				nb++
+			}
+		}
+		result[i]={'film': noms_film[i],'location':nb}
+	}
 
-	return []
+
+	return result
 }
-console.log(filmingLocations[0].fields.nom_tournage)
+
+/*console.log(getFilmLocationsByFilm()[0])
+console.log(getFilmLocationsByFilm()[1])*/
+
 
 // 📝 TODO: Number of different films
 // 1. Implement the function
 // 2. Log the result
 function getNumberOfFilms() {
-	return ''
+	let films = []
+	for(let i=0;i<filmingLocations.length;i++) {
+		if (!(films.includes(filmingLocations[i].fields.nom_tournage))) {
+			films.push(filmingLocations[i].fields.nom_tournage)
+		}
+	}
+	return films.length
 }
+//console.log(getNumberOfFilms())
 
 // 📝 TODO: All the filming locations of `LRDM - Patriot season 2`
 // 1. Return an array with all filming locations of LRDM - Patriot season 2
 // 2. Log the result
 function getArseneFilmingLocations () {
-	return []
+	let locations =[]
+	for(let i=0;i<filmingLocations.length;i++){
+		if(!(locations.includes(filmingLocations[i].fields.adresse_lieu))&&filmingLocations[i].fields.nom_tournage=='LRDM - Patriot season 2'){
+			locations.push(filmingLocations[i].fields.adresse_lieu)
+		}
+	}
+	return locations
 }
 
 // 📝 TODO: Tous les arrondissement des lieux de tournage de nos films favoris
